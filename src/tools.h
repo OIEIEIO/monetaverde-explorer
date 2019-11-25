@@ -8,7 +8,7 @@
 #define PATH_SEPARARTOR '/'
 
 #define XMR_AMOUNT(value) \
-    static_cast<double>(value) / 1e11
+    static_cast<double>(value) / 1e12
 
 #define REMOVE_HASH_BRAKETS(a_hash) \
     a_hash.substr(1, a_hash.size()-2)
@@ -224,7 +224,7 @@ get_payment_id(const transaction& tx,
 inline double
 get_xmr(uint64_t core_amount)
 {
-    return  static_cast<double>(core_amount) / 1e11;
+    return  static_cast<double>(core_amount) / 1e12;
 }
 
 array<size_t, 5>
@@ -237,7 +237,7 @@ read(string filename);
 pair<string, double>
 timestamps_time_scale(const vector<uint64_t>& timestamps,
                       uint64_t timeN, uint64_t resolution = 80,
-                      uint64_t time0 = 1397818193 /* timestamp of the second block */);
+                      uint64_t time0 = 1574628919 /* timestamp of the second block */);
 
 bool
 decode_ringct(const rct::rctSig & rv,
