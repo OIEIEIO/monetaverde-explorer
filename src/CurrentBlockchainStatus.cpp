@@ -297,13 +297,13 @@ CurrentBlockchainStatus::is_thread_running()
    return is_running;
 }
 
-bf::path CurrentBlockchainStatus::blockchain_path {"/home/mwo/.wownero/lmdb"};
+bf::path CurrentBlockchainStatus::blockchain_path {"/home/mwo/.monetaverde/lmdb"};
 
 cryptonote::network_type CurrentBlockchainStatus::nettype {cryptonote::network_type::MAINNET};
 
 string CurrentBlockchainStatus::output_file {"emission_amount.txt"};
 
-string CurrentBlockchainStatus::deamon_url {"http:://127.0.0.1:34568"};
+string CurrentBlockchainStatus::deamon_url {"http:://127.0.0.1:36080"};
 
 uint64_t  CurrentBlockchainStatus::blockchain_chunk_size {10000};
 
