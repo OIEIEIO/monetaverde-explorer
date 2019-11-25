@@ -182,10 +182,10 @@ main(int ac, const char* av[])
 
     string deamon_url {*deamon_url_opt};
 
-    if (testnet && deamon_url == "http:://127.0.0.1:34568")
-        deamon_url = "http:://127.0.0.1:11181";
-    if (stagenet && deamon_url == "http:://127.0.0.1:34568")
-        deamon_url = "http:://127.0.0.1:38081";
+    if (testnet && deamon_url == "http:://127.0.0.1:46080")
+        deamon_url = "http:://127.0.0.1:46081";
+    if (stagenet && deamon_url == "http:://127.0.0.1:56080")
+        deamon_url = "http:://127.0.0.1:56081";
 
     uint64_t mempool_info_timeout {5000};
 
@@ -405,7 +405,7 @@ main(int ac, const char* av[])
             || post_body.count("viewkey") == 0
             || post_body.count("tx_hash") == 0)
         {
-            return string("wow address, viewkey or tx hash not provided");
+            return string("mcn address, viewkey or tx hash not provided");
         }
 
         string tx_hash     = remove_bad_chars(post_body["tx_hash"]);
@@ -452,7 +452,7 @@ main(int ac, const char* av[])
                 || post_body.count("txprvkey") == 0
                 || post_body.count("txhash") == 0)
             {
-                return string("wow address, tx private key or "
+                return string("mcn address, tx private key or "
                                       "tx hash not provided");
             }
 
