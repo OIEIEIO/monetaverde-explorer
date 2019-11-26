@@ -40,7 +40,7 @@ set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} "${MONETAVERDE_BUILD_DIR}"
 
 include(MyUtils)
 
-find_package(Monerotaverde)
+find_package(Monetaverde)
 
 # find boost
 find_package(Boost COMPONENTS
