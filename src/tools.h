@@ -7,7 +7,7 @@
 
 #define PATH_SEPARARTOR '/'
 
-#define XMR_AMOUNT(value) \
+#define MCN_AMOUNT(value) \
     static_cast<double>(value) / 1e12
 
 #define REMOVE_HASH_BRAKETS(a_hash) \
@@ -15,7 +15,7 @@
 
 
 
-#include "monero_headers.h"
+#include "monetaverde_headers.h"
 
 #include "../ext/fmt/ostream.h"
 #include "../ext/fmt/format.h"
@@ -222,7 +222,7 @@ get_payment_id(const transaction& tx,
 
 
 inline double
-get_xmr(uint64_t core_amount)
+get_mcn(uint64_t core_amount)
 {
     return  static_cast<double>(core_amount) / 1e12;
 }
@@ -273,7 +273,7 @@ get_tx_pub_key_from_received_outs(const transaction &tx);
 
 static
 string
-xmr_amount_to_str(const uint64_t& xmr_amount,
+mcn_amount_to_str(const uint64_t& mcn_amount,
                   string _format="{:0.12f}",
                   bool zero_to_question_mark=true)
 {
@@ -281,13 +281,13 @@ xmr_amount_to_str(const uint64_t& xmr_amount,
 
     if (!zero_to_question_mark)
     {
-        amount_str = fmt::format(_format, XMR_AMOUNT(xmr_amount));
+        amount_str = fmt::format(_format, MCN_AMOUNT(mcn_amount));
     }
     else
     {
-        if (xmr_amount > 0 && zero_to_question_mark == true)
+        if (mcn_amount > 0 && zero_to_question_mark == true)
         {
-            amount_str = fmt::format(_format, XMR_AMOUNT(xmr_amount));
+            amount_str = fmt::format(_format, MCN_AMOUNT(mcn_amount));
         }
     }
 
@@ -375,4 +375,4 @@ tx_to_hex(transaction const& tx);
 
 }
 
-#endif //XMREG01_TOOLS_H
+#endif //MCNEG01_TOOLS_H
