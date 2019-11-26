@@ -2,8 +2,8 @@
 # CMake helper for the majority of the cpp-ethereum modules.
 #
 # This module defines
-#     Monero_XXX_LIBRARIES, the libraries needed to use ethereum.
-#     Monero_FOUND, If false, do not try to use ethereum.
+#     Monetaverde_XXX_LIBRARIES, the libraries needed to use ethereum.
+#     Monetaverde_FOUND, If false, do not try to use ethereum.
 #
 # File addetped from cpp-ethereum
 #
@@ -33,7 +33,7 @@ set(LIBS common;blocks;cryptonote_basic;cryptonote_core;multisig;
 		blockchain_db;ringct;wallet;cncrypto;easylogging;version;
         checkpoints;randomx;hardforks)
 
-set(Xmr_INCLUDE_DIRS "${CPP_MONERO_DIR}")
+set(mcn_INCLUDE_DIRS "${CPP_MONETAVERDE_DIR}")
 
 # if the project is a subset of main cpp-ethereum project
 # use same pattern for variables as Boost uses
@@ -42,37 +42,37 @@ foreach (l ${LIBS})
 
 	string(TOUPPER ${l} L)
 
-	find_library(Xmr_${L}_LIBRARY
+	find_library(mcn_${L}_LIBRARY
 		NAMES ${l}
 		PATHS ${CMAKE_LIBRARY_PATH}
-        PATH_SUFFIXES "/src/${l}" "/src/" "/external/db_drivers/lib${l}" "/lib" "/src/crypto" "/contrib/epee/src" "/external/easylogging++/" "/external/RandomWOW"
+        PATH_SUFFIXES "/src/${l}" "/src/" "/external/db_drivers/lib${l}" "/lib" "/src/crypto" "/contrib/epee/src" "/external/easylogging++/" "/external/RandomX"
 		NO_DEFAULT_PATH
 	)
 
-	set(Xmr_${L}_LIBRARIES ${Xmr_${L}_LIBRARY})
+	set(mcn_${L}_LIBRARIES ${mcn_${L}_LIBRARY})
 
-	message(STATUS FindMonero " Xmr_${L}_LIBRARIES ${Xmr_${L}_LIBRARY}")
+	message(STATUS FindMonetaverde " mcn_${L}_LIBRARIES ${mcn_${L}_LIBRARY}")
 
 	add_library(${l} STATIC IMPORTED)
-	set_property(TARGET ${l} PROPERTY IMPORTED_LOCATION ${Xmr_${L}_LIBRARIES})
+	set_property(TARGET ${l} PROPERTY IMPORTED_LOCATION ${mcn_${L}_LIBRARIES})
 
 endforeach()
 
-if (EXISTS ${MONERO_BUILD_DIR}/src/ringct/libringct_basic.a)
-	message(STATUS FindMonero " found libringct_basic.a")
+if (EXISTS ${MONETAVERDE_BUILD_DIR}/src/ringct/libringct_basic.a)
+	message(STATUS FindMonetaverde " found libringct_basic.a")
 	add_library(ringct_basic STATIC IMPORTED)
 	set_property(TARGET ringct_basic
-			PROPERTY IMPORTED_LOCATION ${MONERO_BUILD_DIR}/src/ringct/libringct_basic.a)
+			PROPERTY IMPORTED_LOCATION ${MONETAVERDE_BUILD_DIR}/src/ringct/libringct_basic.a)
 endif()
 
 
-message(STATUS ${MONERO_SOURCE_DIR}/build)
+message(STATUS ${MONETAVERDE_SOURCE_DIR}/build)
 
-# include monero headers
+# include monetaverde headers
 include_directories(
-		${MONERO_SOURCE_DIR}/src
-		${MONERO_SOURCE_DIR}/external
-		${MONERO_SOURCE_DIR}/build
-		${MONERO_SOURCE_DIR}/external/easylogging++
-		${MONERO_SOURCE_DIR}/contrib/epee/include
-		${MONERO_SOURCE_DIR}/external/db_drivers/liblmdb)
+		${MONETAVERDE_SOURCE_DIR}/src
+		${MONETAVERDE_SOURCE_DIR}/external
+		${MONETAVERDE_SOURCE_DIR}/build
+		${MONETAVERDE_SOURCE_DIR}/external/easylogging++
+		${MONETAVERDE_SOURCE_DIR}/contrib/epee/include
+		${MONETAVERDE_SOURCE_DIR}/external/db_drivers/liblmdb)
