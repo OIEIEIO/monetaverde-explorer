@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.5.0)
 
 set(PROJECT_NAME
         mcnblocks)
@@ -17,7 +17,7 @@ if (NOT MONETAVERDE_DIR)
     set(MONETAVERDE_DIR ~/monetaverde)
 endif()
 
-message(STATUS MONERO_DIR ": ${MONETAVERDE_DIR}")
+message(STATUS MONETAVERDE_DIR ": ${MONETAVERDE_DIR}")
 
 if (NOT MONETAVERDE_SOURCE_DIR)
     set(MONETAVERDE_SOURCE_DIR ${MONETAVERDE_DIR}
