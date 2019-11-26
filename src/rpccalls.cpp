@@ -25,7 +25,7 @@ rpccalls::rpccalls(string _deamon_url,
 }
 
 bool
-rpccalls::connect_to_monero_deamon()
+rpccalls::connect_to_monetaverde_deamon()
 {
     //std::lock_guard<std::mutex> guard(m_daemon_rpc_mutex);
 
@@ -57,7 +57,7 @@ rpccalls::get_current_height()
 
     if (!r)
     {
-        cerr << "Error connecting to Monero deamon at "
+        cerr << "Error connecting to MonetaVerde deamon at "
              << deamon_url << endl;
         return 0;
     }
@@ -90,7 +90,7 @@ rpccalls::get_mempool(vector<tx_info>& mempool_txs)
 
     if (!r || res.status != CORE_RPC_STATUS_OK)
     {
-        cerr << "Error connecting to Monero deamon at "
+        cerr << "Error connecting to MonetaVerde deamon at "
              << deamon_url << endl;
         return false;
     }
@@ -189,14 +189,14 @@ rpccalls::get_network_info(COMMAND_RPC_GET_INFO::response& response)
 
         if (!err.empty())
         {
-            cerr << "Error connecting to Monero deamon due to "
+            cerr << "Error connecting to MonetaVerde deamon due to "
                  << err << endl;
             return false;
         }
     }
     else
     {
-        cerr << "Error connecting to Monero deamon at "
+        cerr << "Error connecting to MonetaVerde deamon at "
              << deamon_url << endl;
         return false;
     }
@@ -250,14 +250,14 @@ rpccalls::get_hardfork_info(COMMAND_RPC_HARD_FORK_INFO::response& response)
 
         if (!err.empty())
         {
-            cerr << "Error connecting to Monero deamon due to "
+            cerr << "Error connecting to Monetaverde deamon due to "
                  << err << endl;
             return false;
         }
     }
     else
     {
-        cerr << "Error connecting to Monero deamon at "
+        cerr << "Error connecting to Monetaverde deamon at "
              << deamon_url << endl;
         return false;
     }
@@ -325,7 +325,7 @@ rpccalls::get_dynamic_per_kb_fee_estimate(
     }
     else
     {
-        cerr << "Error connecting to Monero deamon at "
+        cerr << "Error connecting to MonetaVerde deamon at "
              << deamon_url << endl;
         return false;
     }
@@ -381,14 +381,14 @@ rpccalls::get_block(string const& blk_hash, block& blk, string& error_msg)
 
         if (!err.empty())
         {
-            cerr << "Error connecting to Monero deamon due to "
+            cerr << "Error connecting to MonetaVerde deamon due to "
                  << err << endl;
             return false;
         }
     }
     else
     {
-        cerr << "get_block: error connecting to Monero deamon at "
+        cerr << "get_block: error connecting to MonetaVerde deamon at "
              << deamon_url << endl;
         return false;
     }
