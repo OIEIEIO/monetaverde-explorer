@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-#include "monero_headers.h"
+#include "monetaverde_headers.h"
 #include "tools.h"
 
 namespace xmreg
