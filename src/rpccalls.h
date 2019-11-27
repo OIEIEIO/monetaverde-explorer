@@ -130,7 +130,7 @@ public:
         {
             std::lock_guard<std::mutex> guard(m_daemon_rpc_mutex);
 
-            if (!connect_to_monero_deamon())
+            if (!connect_to_monetaverde_deamon())
             {
                 cerr << "get_alt_blocks: not connected to deamon" << endl;
                 return false;
@@ -156,14 +156,14 @@ public:
 
             if (!err.empty())
             {
-                cerr << "Error connecting to Monero deamon due to "
+                cerr << "Error connecting to MonetaVerde deamon due to "
                      << err << endl;
                 return false;
             }
         }
         else
         {
-            cerr << "Error connecting to Monero deamon at "
+            cerr << "Error connecting to MonetaVerde deamon at "
                  << deamon_url << endl;
             return false;
         }
