@@ -244,8 +244,8 @@ struct tx_details
     crypto::hash prefix_hash;
     crypto::public_key pk;
     std::vector<crypto::public_key> additional_pks;
-    uint64_t xmr_inputs;
-    uint64_t xmr_outputs;
+    uint64_t mcn_inputs;
+    uint64_t mcn_outputs;
     uint64_t num_nonrct_inputs;
     uint64_t fee;
     uint64_t mixin_no;
@@ -287,7 +287,7 @@ struct tx_details
         string fee_micro_str {"N/A"};
         string payed_for_kB_micro_str {""};
 
-        const double& xmr_amount = XMR_AMOUNT(fee);
+        const double& mcn_amount = MCN_AMOUNT(fee);
 
         // tx size in kB
         double tx_size =  static_cast<double>(size)/1024.0;
@@ -295,12 +295,12 @@ struct tx_details
 
         if (!input_key_imgs.empty())
         {
-            double payed_for_kB = xmr_amount / tx_size;
+            double payed_for_kB = mcn_amount / tx_size;
 
             mixin_str        = std::to_string(mixin_no);
-            fee_str          = fmt::format("{:0.6f}", xmr_amount);
-            fee_short_str    = fmt::format("{:0.4f}", xmr_amount);
-            fee_micro_str    = fmt::format("{:04.0f}" , xmr_amount * 1e6);
+            fee_str          = fmt::format("{:0.6f}", mcn_amount);
+            fee_short_str    = fmt::format("{:0.4f}", mcn_amount);
+            fee_micro_str    = fmt::format("{:04.0f}" , mcn_amount * 1e6);
             payed_for_kB_str = fmt::format("{:0.4f}", payed_for_kB);
             payed_for_kB_micro_str = fmt::format("{:04.0f}", payed_for_kB * 1e6);
         }
@@ -315,10 +315,10 @@ struct tx_details
                 {"fee_micro"         , fee_micro_str},
                 {"payed_for_kB"      , payed_for_kB_str},
                 {"payed_for_kB_micro", payed_for_kB_micro_str},
-                {"sum_inputs"        , xmr_amount_to_str(xmr_inputs , "{:0.6f}")},
-                {"sum_outputs"       , xmr_amount_to_str(xmr_outputs, "{:0.6f}")},
-                {"sum_inputs_short"  , xmr_amount_to_str(xmr_inputs , "{:0.3f}")},
-                {"sum_outputs_short" , xmr_amount_to_str(xmr_outputs, "{:0.3f}")},
+                {"sum_inputs"        , mcn_amount_to_str(mcn_inputs , "{:0.6f}")},
+                {"sum_outputs"       , mcn_amount_to_str(mcn_outputs, "{:0.6f}")},
+                {"sum_inputs_short"  , mcn_amount_to_str(mcn_inputs , "{:0.3f}")},
+                {"sum_outputs_short" , mcn_amount_to_str(mcn_outputs, "{:0.3f}")},
                 {"no_inputs"         , static_cast<uint64_t>(input_key_imgs.size())},
                 {"no_outputs"        , static_cast<uint64_t>(output_pub_keys.size())},
                 {"no_nonrct_inputs"  , num_nonrct_inputs},
